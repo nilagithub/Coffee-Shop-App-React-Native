@@ -1,0 +1,36 @@
+name: School-iOS Build (Xcode)
+on:
+  push:
+    branches: [ dev ]
+  pull_request:
+
+jobs:
+  build-ios:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: |
+          yarn install
+          cd ios && pod install --repo-update
+
+      - name: Build with xcodebuild
+        run: |
+          cd ios
+          xcodebuild \
+            -workspace Coffee_Shop_App.xcworkspace \
+            -scheme Coffee_Shop_App \
+            -sdk iphoneos \
+            -configuration Release \
+            clean build \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO
