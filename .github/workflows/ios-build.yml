@@ -20,7 +20,7 @@ jobs:
       - name: Install dependencies
         run: |
           yarn install
-          cd ios && pod install --repo-update
+          cd ios && pod update lottie-ios && pod install --repo-update
 
       - name: Build with xcodebuild
         run: |
