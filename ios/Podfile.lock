@@ -76,7 +76,7 @@ PODS:
     - hermes-engine/Pre-built (= 0.72.4)
   - hermes-engine/Pre-built (0.72.4)
   - libevent (2.1.12)
-  - lottie-ios (4.2.0)
+  - lottie-ios (4.4.1)
   - lottie-react-native (6.2.0):
     - lottie-ios (~> 4.2.0)
     - React-Core
